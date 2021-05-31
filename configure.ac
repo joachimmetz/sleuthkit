@@ -221,6 +221,9 @@ dnl status message and set X_JNI for use in Makefile
 AS_IF([test "x$JNI_CPPFLAGS" != x && test "x$ANT_FOUND" != x && test "x$JAVA" != x], [ax_java_support=yes], [ax_java_support=no])
 AM_CONDITIONAL([X_JNI],[test "x$ax_java_support" = "xyes"])
 
+dnl Dependencies for OSS-Fuzz
+AX_TESTS_CHECK_OSSFUZZ
+
 AC_CONFIG_COMMANDS([tsk/tsk_incs.h],
     [echo "#ifndef _TSK_INCS_H" > tsk/tsk_incs.h
     echo "#define _TSK_INCS_H" >> tsk/tsk_incs.h
