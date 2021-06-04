@@ -1086,7 +1086,7 @@ ext2fs_inode_lookup(TSK_FS_INFO * fs, TSK_FS_FILE * a_fs_file,
 uint8_t
 ext2fs_inode_walk(TSK_FS_INFO * fs, TSK_INUM_T start_inum,
     TSK_INUM_T end_inum, TSK_FS_META_FLAG_ENUM flags,
-    TSK_FS_META_WALK_CB a_action, void *a_ptr)
+    TSK_FS_META_WALK_CB a_action, void *a_ptr, int recursion_depth)
 {
     char *myname = "extXfs_inode_walk";
     EXT2FS_INFO *ext2fs = (EXT2FS_INFO *) fs;

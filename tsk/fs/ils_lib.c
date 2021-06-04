@@ -274,12 +274,12 @@ tsk_fs_ils(TSK_FS_INFO * fs, TSK_FS_ILS_FLAG_ENUM lclflags,
 
         print_header_mac();
 
-        if (fs->inode_walk(fs, istart, ilast, flags, ils_mac_act, &data))
+        if (fs->inode_walk(fs, istart, ilast, flags, ils_mac_act, &data, 0))
             return 1;
     }
     else {
         print_header(fs);
-        if (fs->inode_walk(fs, istart, ilast, flags, ils_act, &data))
+        if (fs->inode_walk(fs, istart, ilast, flags, ils_act, &data, 0))
             return 1;
     }
 

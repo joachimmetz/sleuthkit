@@ -142,7 +142,7 @@ tsk_fs_ifind_par(TSK_FS_INFO * fs, TSK_FS_IFIND_FLAG_ENUM lclflags,
 
     /* Walk unallocated MFT entries */
     if (fs->inode_walk(fs, fs->first_inum, fs->last_inum,
-            TSK_FS_META_FLAG_UNALLOC, ifind_par_act, &data)) {
+            TSK_FS_META_FLAG_UNALLOC, ifind_par_act, &data, 0)) {
         return 1;
     }
 
@@ -567,7 +567,7 @@ tsk_fs_ifind_data(TSK_FS_INFO * fs, TSK_FS_IFIND_FLAG_ENUM lclflags,
 
     if (fs->inode_walk(fs, fs->first_inum, fs->last_inum,
             TSK_FS_META_FLAG_ALLOC | TSK_FS_META_FLAG_UNALLOC,
-            ifind_data_act, &data)) {
+            ifind_data_act, &data, 0)) {
         return 1;
     }
 

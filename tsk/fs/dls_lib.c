@@ -212,7 +212,7 @@ tsk_fs_blkls(TSK_FS_INFO * fs, TSK_FS_BLKLS_FLAG_ENUM a_blklsflags,
     if (a_blklsflags & TSK_FS_BLKLS_SLACK) {
         /* get the info on each allocated inode */
         if (fs->inode_walk(fs, fs->first_inum, fs->last_inum,
-                TSK_FS_META_FLAG_ALLOC, slack_inode_act, &data))
+                TSK_FS_META_FLAG_ALLOC, slack_inode_act, &data, 0))
             return 1;
     }
     else if (a_blklsflags & TSK_FS_BLKLS_LIST) {

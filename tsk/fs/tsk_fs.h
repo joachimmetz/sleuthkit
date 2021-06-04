@@ -991,7 +991,7 @@ extern "C" {
 
          TSK_FS_BLOCK_FLAG_ENUM(*block_getflags) (TSK_FS_INFO * a_fs, TSK_DADDR_T a_addr);      ///< \internal
 
-         uint8_t(*inode_walk) (TSK_FS_INFO * fs, TSK_INUM_T start, TSK_INUM_T end, TSK_FS_META_FLAG_ENUM flags, TSK_FS_META_WALK_CB cb, void *ptr);     ///< FS-specific function: Call tsk_fs_meta_walk() instead.
+         uint8_t(*inode_walk) (TSK_FS_INFO * fs, TSK_INUM_T start, TSK_INUM_T end, TSK_FS_META_FLAG_ENUM flags, TSK_FS_META_WALK_CB cb, void *ptr, int recursion_depth);     ///< FS-specific function: Call tsk_fs_meta_walk() instead.
 
          uint8_t(*file_add_meta) (TSK_FS_INFO * fs, TSK_FS_FILE * fs_file, TSK_INUM_T addr);    ///< \internal
 

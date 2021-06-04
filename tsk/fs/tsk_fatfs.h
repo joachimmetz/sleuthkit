@@ -337,7 +337,7 @@ extern "C" {
     extern uint8_t fatfs_inode_walk(TSK_FS_INFO * fs,
         TSK_INUM_T start_inum, TSK_INUM_T end_inum,
         TSK_FS_META_FLAG_ENUM a_flags, TSK_FS_META_WALK_CB a_action,
-        void *a_ptr);
+        void *a_ptr, int recursion_depth);
 
     extern uint8_t fatfs_inode_lookup(TSK_FS_INFO *a_fs,
         TSK_FS_FILE *a_fs_file, TSK_INUM_T a_inum);

@@ -2013,7 +2013,7 @@ static uint8_t
 static uint8_t
     yaffsfs_inode_walk(TSK_FS_INFO *fs, TSK_INUM_T start_inum,
     TSK_INUM_T end_inum, TSK_FS_META_FLAG_ENUM flags,
-    TSK_FS_META_WALK_CB a_action, void *a_ptr)
+    TSK_FS_META_WALK_CB a_action, void *a_ptr, int recursion_depth)
 {
     YAFFSFS_INFO *yfs = (YAFFSFS_INFO *)fs;
     TSK_FS_FILE *fs_file;

@@ -211,5 +211,5 @@ tsk_fs_meta_walk(TSK_FS_INFO * a_fs, TSK_INUM_T a_start,
     if ((a_fs == NULL) || (a_fs->tag != TSK_FS_INFO_TAG))
         return 1;
 
-    return a_fs->inode_walk(a_fs, a_start, a_end, a_flags, a_cb, a_ptr);
+    return a_fs->inode_walk(a_fs, a_start, a_end, a_flags, a_cb, a_ptr, 0);
 }

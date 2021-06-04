@@ -208,7 +208,7 @@ tsk_fs_blkcalc(TSK_FS_INFO * fs, TSK_FS_BLKCALC_FLAG_ENUM a_lclflags,
     }
     else if (a_lclflags == TSK_FS_BLKCALC_SLACK) {
         if (fs->inode_walk(fs, fs->first_inum, fs->last_inum,
-                TSK_FS_META_FLAG_ALLOC, count_slack_inode_act, &data))
+                TSK_FS_META_FLAG_ALLOC, count_slack_inode_act, &data, 0))
             return -1;
     }
 

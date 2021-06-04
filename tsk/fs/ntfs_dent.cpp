@@ -1250,7 +1250,7 @@ ntfs_dir_open_meta(TSK_FS_INFO * a_fs, TSK_FS_DIR ** a_fs_dir,
         getParentMap(ntfs);
 
         if (a_fs->inode_walk(a_fs, a_fs->first_inum, a_fs->last_inum,
-                (TSK_FS_META_FLAG_ENUM)(TSK_FS_META_FLAG_UNALLOC | TSK_FS_META_FLAG_ALLOC), ntfs_parent_act, NULL)) {
+                (TSK_FS_META_FLAG_ENUM)(TSK_FS_META_FLAG_UNALLOC | TSK_FS_META_FLAG_ALLOC), ntfs_parent_act, NULL, 0)) {
             tsk_release_lock(&ntfs->orphan_map_lock);
             return TSK_ERR;
         }

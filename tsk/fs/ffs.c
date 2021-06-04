@@ -842,7 +842,7 @@ ffs_inode_lookup(TSK_FS_INFO * fs, TSK_FS_FILE * a_fs_file,
 uint8_t
 ffs_inode_walk(TSK_FS_INFO * fs, TSK_INUM_T start_inum,
     TSK_INUM_T end_inum, TSK_FS_META_FLAG_ENUM a_flags,
-    TSK_FS_META_WALK_CB action, void *ptr)
+    TSK_FS_META_WALK_CB action, void *ptr, int recursion_depth)
 {
     char *myname = "ffs_inode_walk";
     FFS_INFO *ffs = (FFS_INFO *) fs;

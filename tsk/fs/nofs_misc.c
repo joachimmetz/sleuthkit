@@ -172,7 +172,7 @@ tsk_fs_nofs_block_walk(TSK_FS_INFO * fs, TSK_DADDR_T a_start_blk,
 uint8_t
 tsk_fs_nofs_inode_walk(TSK_FS_INFO * a_fs, TSK_INUM_T a_start_inum,
     TSK_INUM_T a_end_inum, TSK_FS_META_FLAG_ENUM a_flags,
-    TSK_FS_META_WALK_CB a_action, void *a_ptr)
+    TSK_FS_META_WALK_CB a_action, void *a_ptr, int recursion_depth)
 {
     tsk_error_reset();
     tsk_error_set_errno(TSK_ERR_FS_UNSUPFUNC);

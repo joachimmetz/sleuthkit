@@ -210,8 +210,8 @@ APFSFSCompat::APFSFSCompat(TSK_IMG_INFO* img_info, const TSK_POOL_INFO* pool_inf
 
   _fsinfo.inode_walk = [](TSK_FS_INFO* fs, TSK_INUM_T start_inum, TSK_INUM_T end_inum,
                           TSK_FS_META_FLAG_ENUM flags, TSK_FS_META_WALK_CB action,
-                          void* ptr) {
-      return to_fs(fs).inode_walk(fs, start_inum, end_inum, flags, action, ptr); 
+                          void* ptr, int recursion_depth) {
+      return to_fs(fs).inode_walk(fs, start_inum, end_inum, flags, action, ptr, recursion_depth);
   };
 
   _fsinfo.file_add_meta = [](TSK_FS_INFO* fs, TSK_FS_FILE* fs_file,
@@ -560,7 +560,7 @@ TSK_RETVAL_ENUM APFSFSCompat::dir_open_meta(TSK_FS_DIR** a_fs_dir,
 }
 
 uint8_t APFSFSCompat::inode_walk(TSK_FS_INFO* fs, TSK_INUM_T start_inum, TSK_INUM_T end_inum,
-    TSK_FS_META_FLAG_ENUM flags, TSK_FS_META_WALK_CB action, void* ptr) {
+    TSK_FS_META_FLAG_ENUM flags, TSK_FS_META_WALK_CB action, void* ptr, int recursion_depth) {
 
     TSK_FS_FILE *fs_file;
     TSK_INUM_T inum;

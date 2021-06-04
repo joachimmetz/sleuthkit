@@ -1097,12 +1097,13 @@ inode_walk_dent_act(TSK_FS_FILE * fs_file, const char *a_path, void *a_ptr)
  * @param [in] a_selection_flags Inode selection criteria.
  * @param [in] a_action Callback function for selected inodes.
  * @param [in] a_ptr Private data pointer passed through to callback function.
+ * @param [in] recursion_depth Recursion depth to limit the number of self-calls
  * @return 0 on success, 1 on failure, per TSK convention
  */
 uint8_t
 fatfs_inode_walk(TSK_FS_INFO *a_fs, TSK_INUM_T a_start_inum,
     TSK_INUM_T a_end_inum, TSK_FS_META_FLAG_ENUM a_selection_flags,
-    TSK_FS_META_WALK_CB a_action, void *a_ptr)
+    TSK_FS_META_WALK_CB a_action, void *a_ptr, int recursion_depth)
 {
     char *func_name = "fatfs_inode_walk";
     FATFS_INFO *fatfs = (FATFS_INFO*)a_fs;
