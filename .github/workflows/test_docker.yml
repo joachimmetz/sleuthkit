@@ -8,6 +8,8 @@ jobs:
     strategy:
       matrix:
         fedora_version:
+        - '40'
+        - '42'
         - '44'
         sleuthkit_version:
         - '4.10.0'
