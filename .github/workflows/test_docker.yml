@@ -7,9 +7,20 @@ jobs:
     continue-on-error: true
     strategy:
       matrix:
-        version: ['4.15.0', '4.14.0']
+        fedora_version:
+        - '44'
+        sleuthkit_version:
+        - '4.10.0'
+        - '4.10.1'
+        - '4.10.2'
+        - '4.11.0'
+        - '4.11.1'
+        - '4.12.0'
+        - '4.13.0'
+        - '4.14.0'
+        - '4.15.0'
     container:
-      image: registry.fedoraproject.org/fedora:44
+      image: registry.fedoraproject.org/fedora:${{ matrix.fedora_version }}
     steps:
     - name: Set up container
       run: |
@@ -23,7 +34,8 @@ jobs:
       run: |
         git clone https://github.com/sleuthkit/sleuthkit.git
         cd sleuthkit
-        git checkout sleuthkit-${{ matrix.version }}
+        git checkout sleuthkit-${{ matrix.sleuthkit_version }}
         ./bootstrap
         ./configure
         make
+        tools/fstools/fls -V
