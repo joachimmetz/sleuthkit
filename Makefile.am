@@ -317,7 +317,6 @@ tools_fiwalk_src_libfiwalk_la_SOURCES = \
 	tools/fiwalk/src/content.h \
 	tools/fiwalk/src/dfxml.cpp \
 	tools/fiwalk/src/dfxml.h \
-	tools/fiwalk/src/fiwalk.cpp  \
 	tools/fiwalk/src/fiwalk.h \
 	tools/fiwalk/src/fiwalk_tsk.cpp \
 	tools/fiwalk/src/hash_t.h \
