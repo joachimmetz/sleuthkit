@@ -1,0 +1,27 @@
+name: issue3498
+on:
+  pull_request:
+  push:
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: fedora:44
+    steps:
+    - uses: actions/checkout@v6
+    - name: Install dependencies
+      run: |
+        dnf install -y @development-tools autoconf automake dnf-plugins-core gcc-c++ git libtool pkg-config unzip wget
+    - name: Download test file
+      run: |
+        wget -O 4-kwsrch-ext3.zip "http://prdownloads.sourceforge.net/dftt/4-kwsrch-ext3.zip?download"
+        unzip 4-kwsrch-ext3.zip
+    - name: Build from source
+      run: |
+        ./bootstrap
+        ./configure
+        make
+    - name: Run tests
+      run: |
+        ./tools/fstools/fsstat 4-kwsrch-ext3/ext3-img-kw-1.dd
