@@ -37,7 +37,7 @@ jobs:
         make >/dev/null
     - name: Run tests
       run: |
-        make check
+        ./runtests.sh
   ubsan:
     name: Check source with ubsan
     runs-on: ubuntu-latest
@@ -70,7 +70,7 @@ jobs:
         make >/dev/null
     - name: Run tests
       run: |
-        make check
+        ./runtests.sh
   scan_build:
     name: Scan Build and Upload
     runs-on: ubuntu-latest
