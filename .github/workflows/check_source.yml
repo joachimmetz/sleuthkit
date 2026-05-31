@@ -105,7 +105,7 @@ jobs:
       with:
         msystem: MINGW64
         update: true
-        install: autoconf automake curl gettext gettext-devel git libtool make mingw-w64-x86_64-clang-analyzer pkg-config
+        install: autoconf automake curl gettext gettext-devel git libtool make mingw-w64-x86_64-clang-analyzer mingw-w64-x86_64-nodejs pkg-config
     - name: Build from source
       shell: msys2 {0}
       run: |
