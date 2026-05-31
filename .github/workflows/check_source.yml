@@ -111,6 +111,7 @@ jobs:
         ./configure --disable-java
         scan-build -o scan-results -sarif make
     - name: Combine individual SARIF files
+      shell: pwsh
       run: |
         npx @microsoft/sarif-multitool merge 'scan-results/*/*.sarif' --merge-runs --output-file=scan-build-report.sarif
     - name: Upload SARIF file
