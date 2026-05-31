@@ -50,9 +50,9 @@ fi
 for FILE in ${IMAGE_DIR}/*
 do
 	rm -f base.log thread-*.log
-	${FS_THREAD_TEST} ${IMAGE_DIR}/ext2fs.dd 1 1
+	${FS_THREAD_TEST} ${FILE} 1 1
 	mv thread-0.log base.log
-	${FS_THREAD_TEST} ${IMAGE_DIR}/ext2fs.dd ${NTHREADS} ${NITERS}
+	${FS_THREAD_TEST} ${FILE} ${NTHREADS} ${NITERS}
 
 	if ! check_diffs;
 	then
