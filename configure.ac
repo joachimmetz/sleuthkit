@@ -117,6 +117,9 @@ dnl Add enable/disable option
 AC_ARG_ENABLE([java],
     [AS_HELP_STRING([--disable-java], [Do not build the java bindings or jar file])])
 
+AX_TESTS_CHECK_ENABLE_ASAN
+AX_TESTS_CHECK_ENABLE_UBSAN
+
 dnl Checks for libraries.
 
 
@@ -332,39 +335,38 @@ WARNINGS='-Wall -Wextra -Wno-unused-parameter'
 AC_SUBST(AM_CFLAGS, $WARNINGS)
 AC_SUBST(AM_CXXFLAGS, $WARNINGS)
 
-AC_CONFIG_FILES([
-    Makefile
-    tsk/Makefile
-    tsk/base/Makefile
-    tsk/img/Makefile
-    tsk/vs/Makefile
-    tsk/fs/Makefile
-    tsk/hashdb/Makefile
-    tsk/auto/Makefile
-    tsk/pool/Makefile
-    tsk/util/Makefile
-    tsk/util/Bitlocker/Makefile
-    tools/Makefile
-    tools/imgtools/Makefile
-    tools/vstools/Makefile
-    tools/fstools/Makefile
-    tools/hashtools/Makefile
-    tools/srchtools/Makefile
-    tools/autotools/Makefile
-    tools/pooltools/Makefile
-    tools/sorter/Makefile
-    tools/timeline/Makefile
-    tools/fiwalk/Makefile
-    tools/fiwalk/src/Makefile
-    tools/fiwalk/plugins/Makefile
-    tests/Makefile
-    samples/Makefile
-    man/Makefile
-    bindings/java/Makefile
-    bindings/java/jni/Makefile
-    case-uco/java/Makefile
-    unit_tests/Makefile
-    unit_tests/base/Makefile])
+AC_CONFIG_FILES([Makefile])
+AC_CONFIG_FILES([tsk/Makefile])
+AC_CONFIG_FILES([tsk/base/Makefile])
+AC_CONFIG_FILES([tsk/img/Makefile])
+AC_CONFIG_FILES([tsk/vs/Makefile])
+AC_CONFIG_FILES([tsk/fs/Makefile])
+AC_CONFIG_FILES([tsk/hashdb/Makefile])
+AC_CONFIG_FILES([tsk/auto/Makefile])
+AC_CONFIG_FILES([tsk/pool/Makefile])
+AC_CONFIG_FILES([tsk/util/Makefile])
+AC_CONFIG_FILES([tsk/util/Bitlocker/Makefile])
+AC_CONFIG_FILES([tools/Makefile])
+AC_CONFIG_FILES([tools/imgtools/Makefile])
+AC_CONFIG_FILES([tools/vstools/Makefile])
+AC_CONFIG_FILES([tools/fstools/Makefile])
+AC_CONFIG_FILES([tools/hashtools/Makefile])
+AC_CONFIG_FILES([tools/srchtools/Makefile])
+AC_CONFIG_FILES([tools/autotools/Makefile])
+AC_CONFIG_FILES([tools/pooltools/Makefile])
+AC_CONFIG_FILES([tools/sorter/Makefile])
+AC_CONFIG_FILES([tools/timeline/Makefile])
+AC_CONFIG_FILES([tools/fiwalk/Makefile])
+AC_CONFIG_FILES([tools/fiwalk/src/Makefile])
+AC_CONFIG_FILES([tools/fiwalk/plugins/Makefile])
+AC_CONFIG_FILES([tests/Makefile])
+AC_CONFIG_FILES([samples/Makefile])
+AC_CONFIG_FILES([man/Makefile])
+AC_CONFIG_FILES([bindings/java/Makefile])
+AC_CONFIG_FILES([bindings/java/jni/Makefile])
+AC_CONFIG_FILES([case-uco/java/Makefile])
+AC_CONFIG_FILES([unit_tests/Makefile])
+AC_CONFIG_FILES([unit_tests/base/Makefile])
 
 AC_OUTPUT
 
@@ -382,6 +384,8 @@ Building:
    libvmdk support:                       $ax_libvmdk
    libvslvm support:                      $ax_libvslvm
 Features:
+   ASAN support:                          $ac_cv_have_asan
+   UBSAN support:                         $ac_cv_have_ubsan
    Java/JNI support:                      $ax_java_support
    Multithreading:                        $ax_multithread
 ]);
