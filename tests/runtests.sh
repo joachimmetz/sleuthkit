@@ -47,55 +47,18 @@ then
 	exit ${EXIT_IGNORE};
 fi
 
-rm -f base.log thread-*.log
-${FS_THREAD_TEST} -f ext2 ${IMAGE_DIR}/ext2fs.dd 1 1
-mv thread-0.log base.log
-${FS_THREAD_TEST} -f ext2 ${IMAGE_DIR}/ext2fs.dd ${NTHREADS} ${NITERS}
+for FILE in ${IMAGE_DIR}/*
+do
+	rm -f base.log thread-*.log
+	${FS_THREAD_TEST} ${IMAGE_DIR}/ext2fs.dd 1 1
+	mv thread-0.log base.log
+	${FS_THREAD_TEST} ${IMAGE_DIR}/ext2fs.dd ${NTHREADS} ${NITERS}
 
-if ! check_diffs;
-then
-	exit ${EXIT_FAILURE};
-fi
-
-rm -f base.log thread-*.log
-${FS_THREAD_TEST} -f ufs ${IMAGE_DIR}/misc-ufs1.dd 1 1
-mv thread-0.log base.log
-${FS_THREAD_TEST} -f ufs ${IMAGE_DIR}/misc-ufs1.dd ${NTHREADS} ${NITERS}
-
-if ! check_diffs;
-then
-	exit ${EXIT_FAILURE};
-fi
-
-rm -f base.log thread-*.log
-${FS_THREAD_TEST} -f hfs -o 64 ${IMAGE_DIR}/test_hfs.dmg 1 1
-mv thread-0.log base.log
-${FS_THREAD_TEST} -f hfs -o 64 ${IMAGE_DIR}/test_hfs.dmg ${NTHREADS} ${NITERS}
-
-if ! check_diffs;
-then
-	exit ${EXIT_FAILURE};
-fi
-
-rm -f base.log thread-*.log
-${FS_THREAD_TEST} -f ntfs ${IMAGE_DIR}/ntfs-img-kw-1.dd 1 1
-mv thread-0.log base.log
-${FS_THREAD_TEST} -f ntfs ${IMAGE_DIR}/ntfs-img-kw-1.dd ${NTHREADS} ${NITERS}
-
-if ! check_diffs;
-then
-	exit ${EXIT_FAILURE};
-fi
-
-rm -f base.log thread-*.log
-${FS_THREAD_TEST} -f fat ${IMAGE_DIR}/fat32.dd 1 1
-mv thread-0.log base.log
-${FS_THREAD_TEST} -f fat ${IMAGE_DIR}/fat32.dd ${NTHREADS} ${NITERS}
-
-if ! check_diffs;
-then
-	exit ${EXIT_FAILURE};
-fi
+	if ! check_diffs;
+	then
+		exit ${EXIT_FAILURE};
+	fi
+done
 
 exit ${EXIT_SUCCESS};
 

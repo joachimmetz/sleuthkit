@@ -13,7 +13,19 @@ jobs:
       uses: actions/checkout@v6
     - name: Install build dependencies
       run: |
-        sudo apt -y install autoconf automake autopoint build-essential git libasan8 libtool pkg-config
+        sudo apt -y install autoconf automake autopoint build-essential git libasan8 libtool pkg-config unzip wget
+    - name: Download test file
+      run: |
+        wget -O 2-kwsrch-fat.zip "http://prdownloads.sourceforge.net/dftt/2-kwsrch-fat.zip?download"
+        wget -O 3-kwsrch-ntfs.zip "http://prdownloads.sourceforge.net/dftt/3-kwsrch-ntfs.zip?download"
+        wget -O 4-kwsrch-ext3.zip "http://prdownloads.sourceforge.net/dftt/4-kwsrch-ext3.zip?download"
+        unzip 2-kwsrch-fat.zip
+        unzip 3-kwsrch-ntfs.zip
+        unzip 4-kwsrch-ext3.zip
+        mkdir -p ${HOME}/from_brian
+        mv 2-kwsrch-fat/fat-img-kw.dd ${HOME}/from_brian/
+        mv 3-kwsrch-ntfs/ntfs-img-kw-1.dd ${HOME}/from_brian
+        mv 4-kwsrch-ext3/ext3-img-kw-1.dd ${HOME}/from_brian/
     - name: Building from source
       env:
         CFLAGS: "-fno-omit-frame-pointer -fsanitize=address -g -O0"
@@ -34,7 +46,19 @@ jobs:
       uses: actions/checkout@v6
     - name: Install build dependencies
       run: |
-        sudo apt -y install autoconf automake autopoint build-essential git libtool libubsan1 pkg-config
+        sudo apt -y install autoconf automake autopoint build-essential git libtool libubsan1 pkg-config unzip wget
+    - name: Download test file
+      run: |
+        wget -O 2-kwsrch-fat.zip "http://prdownloads.sourceforge.net/dftt/2-kwsrch-fat.zip?download"
+        wget -O 3-kwsrch-ntfs.zip "http://prdownloads.sourceforge.net/dftt/3-kwsrch-ntfs.zip?download"
+        wget -O 4-kwsrch-ext3.zip "http://prdownloads.sourceforge.net/dftt/4-kwsrch-ext3.zip?download"
+        unzip 2-kwsrch-fat.zip
+        unzip 3-kwsrch-ntfs.zip
+        unzip 4-kwsrch-ext3.zip
+        mkdir -p ${HOME}/from_brian
+        mv 2-kwsrch-fat/fat-img-kw.dd ${HOME}/from_brian/
+        mv 3-kwsrch-ntfs/ntfs-img-kw-1.dd ${HOME}/from_brian
+        mv 4-kwsrch-ext3/ext3-img-kw-1.dd ${HOME}/from_brian/
     - name: Building from source
       env:
         CFLAGS: "-fsanitize=undefined -fno-sanitize-recover=undefined"
